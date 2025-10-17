@@ -7,29 +7,23 @@ int arePermutations(char *c1, char *c2)
     size_t len1 = strlen(c1), len2 = strlen(c2);
     if (len1 != len2)
     {
-        printf("Tamanhos diferentes NÃO são permutas!");
+        printf("Tamanhos diferentes NÃO são permutas! \n");
         return 0;
     }
     int ASCII[256] = {0};
-    for (int i = 0; c1[i]; i++)
+    for (size_t i = 0; i < len1; i++)
     {
         unsigned char c = c1[i];
-        if (ASCII[c] > 0)
-        {
-            ASCII[c++];
-        }
+        ASCII[c++];
     }
-    for (int i = 0; c2[i]; i++)
+    for (size_t i = 0; i < len2; i++)
     {
         unsigned char c = c2[i];
-        if (ASCII[c] > 0)
-        {
-            ASCII[c--];
-        }
+        ASCII[c--];
     }
     for (int i = 0; i < 256; i++)
     {
-        if (ASCII[i] > 0)
+        if (ASCII[i] != 0)
             return 0;
     }
     return 1;
